@@ -77,7 +77,7 @@ export default async (req, res) => {
           // we can also pass the token to the browser to make requests from there
 
           res.setHeader('Set-Cookie', [ResetCookieSerialized, serializeCookie('access_token', access_token), serializeCookie('refresh_token', refresh_token)]);
-          res.writeHead(302, { Location: '/' });
+          res.writeHead(302, { Location: '/dashboard' });
           res.end();
         } else {
           res.writeHead(302, { Location: '/error' +

@@ -12,7 +12,7 @@ export default function Home() {
       </Head>
       <Page>
         <div className={styles.buttonContainer}>
-          <Button href="/dashboard">Take me to reset my spotify please</Button>
+          <Button href="/api/login">Take me to reset my spotify please</Button>
         </div>
 
         <img className={styles.img} src="/stock-photo.jpg" />
