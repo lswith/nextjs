@@ -1,5 +1,5 @@
-import reset from 'reset-css-complete';
-import rootStyles from '../styles/rootStyles.css';
+const reset = require('reset-css-complete');
+const css = require('../styles/rootStyles.css');
 
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />
