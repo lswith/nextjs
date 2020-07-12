@@ -31,15 +31,17 @@ export async function GetArtists(token): Promise<Array<SpotifyApi.ArtistObjectFu
   return artists;
 }
 
-// async function UnFollowArtists(
-  // artists: Array<SpotifyApi.ArtistObjectFull>
-// ): Promise<void> {
-  // for (let i = 0; i < artists.length; i++) {
-    // await spotifyApi.unfollowArtists([artists[i].id]);
-    // console.log('unfollowed: ' + artists[i].name);
-  // }
-  // return;
-// }
+export async function UnFollowArtists(token): Promise<void> {
+  const artists = await GetArtists(token);
+  const spotifyApi = new SpotifyAPI();
+  spotifyApi.setAccessToken(token);
+
+  for (let i = 0; i < artists.length; i++) {
+    await spotifyApi.unfollowArtists([artists[i].id]);
+    console.log('unfollowed: ' + artists[i].name);
+  }
+  return;
+}
 
 export async function GetLibraryAlbums(token): Promise<SpotifyApi.SavedAlbumObject[]> {
   const spotifyApi = new SpotifyAPI();
