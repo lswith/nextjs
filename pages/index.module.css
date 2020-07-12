@@ -1,0 +1,27 @@
+.headingContainer {
+  text-align: center;
+}
+
+.heading {
+  font-size: 45px;
+  font-family: var(--heading-font-family);
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  display: block;
+  font-family: var(--font-family);
+  font-size: 25px;
+}
+
+.button {
+  margin-bottom: 20px;
+}
+
+.img {
+  width: 100%;
+}
+
+.disclaimer {
+  font-style: italic;  
+}
