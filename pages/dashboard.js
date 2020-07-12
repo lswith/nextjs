@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Page from '../components/Page';
 import Button from '../components/Button';
 import FormattedContent from '../components/FormattedContent';
