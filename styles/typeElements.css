@@ -1,0 +1,35 @@
+@define-mixin element-link {
+  font-weight: bold;
+  color: var(--color-primary-500);
+
+  &:hover, &:focus {
+    text-decoration: underline;
+  }
+}
+
+@define-mixin listSpacing {
+  padding-left: var(--space-700);
+  margin-bottom: var(--space-600);
+
+  & ol, & ul {
+    margin-bottom: 0;
+  }
+
+  & > *:first-child {
+    margin-top: 0;
+  }
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@define-mixin element-ul {
+  @mixin listSpacing;
+  list-style: disc;
+
+}
+
+@define-mixin element-ol {
+  @mixin listSpacing;
+  list-style: number;
+}

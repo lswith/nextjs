@@ -1,0 +1,35 @@
+.formattedContent p {
+  margin: 20px 0;
+}
+
+.formattedContent em {
+  font-style: italic;
+}
+
+.formattedContent strong {
+  font-weight: bold;
+}
+
+.formattedContent u {
+  text-decoration: underline;
+}
+
+.formattedContent a {
+  @mixin element-link;
+}
+
+.formattedContent ul {
+  @mixin element-ul;
+}
+
+.formattedContent ol {
+  @mixin element-ol;
+}
+
+.formattedContent > :first-child {
+  margin-top: 0;
+}
+
+.formattedContent > :last-child {
+  margin-bottom: 0;
+}

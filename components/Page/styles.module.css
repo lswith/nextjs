@@ -2,3 +2,19 @@
   max-width: 700px;
   margin: 0 auto;
 }
+
+.heading {
+  text-align: center;
+}
+
+.title {
+  font-size: 65px;
+  font-family: var(--heading-font-family);
+  margin-bottom: 45px;
+}
+
+.subtitle {
+  display: block;
+  font-family: var(--font-family);
+  font-size: 25px;
+}

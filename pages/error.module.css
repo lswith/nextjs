@@ -1,0 +1,16 @@
+.container {
+  border: 8px solid black;
+  padding: 40px 70px 40px 30px;
+  box-shadow: 5px 5px 0;
+  line-height: 1;
+}
+
+.title {
+  font-size: 50px;
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  font-size: 25px;
+  margin-bottom: 40px;
+}
