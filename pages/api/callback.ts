@@ -42,7 +42,6 @@ export default async (req, res) => {
       });
       res.end();
     } else {
-      res.setHeader('Set-Cookie', ResetCookieSerialized);
       
       const authOptions = {
         url: 'https://accounts.spotify.com/api/token',
@@ -77,8 +76,7 @@ export default async (req, res) => {
   
           // we can also pass the token to the browser to make requests from there
 
-          res.setHeader('Set-Cookie', serializeCookie('access_token', access_token));
-          res.setHeader('Set-Cookie', serializeCookie('refresh_token', refresh_token));
+          res.setHeader('Set-Cookie', [ResetCookieSerialized, serializeCookie('access_token', access_token), serializeCookie('refresh_token', refresh_token)]);
           res.writeHead(302, { Location: '/' });
           res.end();
         } else {
