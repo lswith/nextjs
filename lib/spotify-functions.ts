@@ -55,6 +55,15 @@ export async function UnFollowArtists(token): Promise<void> {
   return;
 }
 
+export async function GetLibraryAlbumsCount(token): Promise<number> {
+  const spotifyApi = new SpotifyAPI();
+  spotifyApi.setAccessToken(token);
+
+  let albums: SpotifyApi.SavedAlbumObject[] = [];
+  const res = await spotifyApi.getMySavedAlbums({limit: 1});
+  return res.body.total;
+}
+
 export async function GetLibraryAlbums(token): Promise<SpotifyApi.SavedAlbumObject[]> {
   const spotifyApi = new SpotifyAPI();
   spotifyApi.setAccessToken(token);
@@ -74,6 +83,13 @@ export async function GetLibraryAlbums(token): Promise<SpotifyApi.SavedAlbumObje
   return albums;
 }
 
+export async function GetPlaylistsCount(token): Promise<number> {
+  const spotifyApi = new SpotifyAPI();
+  spotifyApi.setAccessToken(token);
+  const res = await spotifyApi.getUserPlaylists({limit: 1});
+  return res.body.total
+}
+
 export async function GetPlaylists(token): Promise<SpotifyApi.PlaylistObjectSimplified[]> {
   const spotifyApi = new SpotifyAPI();
   spotifyApi.setAccessToken(token);
@@ -91,6 +107,14 @@ export async function GetPlaylists(token): Promise<SpotifyApi.PlaylistObjectSimp
     }
   }
   return playlists;
+}
+
+export async function GetLibraryTrackCount(token): Promise<number> {
+  const spotifyApi = new SpotifyAPI();
+  spotifyApi.setAccessToken(token);
+
+  const res = await spotifyApi.getMySavedTracks({limit: 1});
+  return res.body.total;
 }
 
 export async function GetLibraryTracks(token): Promise<SpotifyApi.SavedTrackObject[]> {

@@ -4,7 +4,7 @@ import cookie from 'cookie';
 import Page from '../components/Page';
 import Button from '../components/Button';
 import FormattedContent from '../components/FormattedContent';
-import { GetFollowedArtistsCount, GetPlaylists, GetLibraryAlbums, GetLibraryTracks, GetMe, UnFollowArtists} from '../lib/spotify-functions';
+import { GetFollowedArtistsCount, GetPlaylistsCount, GetLibraryAlbumsCount, GetLibraryTrackCount, GetMe, UnFollowArtists} from '../lib/spotify-functions';
 import styles from './dashboard.module.css';
 
 const pluralize = (count, word) => {
@@ -60,18 +60,18 @@ Dashboard.getInitialProps = async (ctx) => {
   const cookies = cookie.parse(ctx.req.headers.cookie);
   const token = cookies.access_token;
   const artistCount = await GetFollowedArtistsCount(token);
-  const playlists = await GetPlaylists(token);
-  const songs = await GetLibraryTracks(token);
-  const albums = await GetLibraryAlbums(token);
+  const playlistsCount = await GetPlaylistsCount(token);
+  const songsCount = await GetLibraryTrackCount(token);
+  const albumsCount = await GetLibraryAlbumsCount(token);
   const me = await GetMe(token);
 
   return {
     profilePhoto: me.images?.length > 0 ? me.images[0].url : './default-profile.png',
     name: me.display_name,
     artistCount: artistCount,
-    playlistCount: playlists.length,
-    songCount: songs.length,
-    albumCount: albums.length,
+    playlistCount: playlistsCount,
+    songCount: songsCount,
+    albumCount: albumsCount,
     token,
   }
 }
