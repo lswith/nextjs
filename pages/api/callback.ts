@@ -80,6 +80,12 @@ export default async (req, res) => {
           res.writeHead(302, { Location: '/dashboard' });
           res.end();
         } else {
+          if (error) {
+            console.log(error);
+          }
+          if (response.statusCode !== 200) {
+            console.log(response.statusCode);
+          }
           res.writeHead(302, { Location: '/error?' +
               querystring.stringify({
                 error: 'invalid_token',
