@@ -85,6 +85,7 @@ export default async (req, res) => {
                 error: 'invalid_token',
               })
             });
+          res.end();
         }
       });
     }
