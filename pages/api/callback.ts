@@ -4,7 +4,7 @@ import request from 'request';
 
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
-const redirect_uri = process.env.REDIRECT_URL
+const redirect_uri = process.env.REDIRECT_URL;
 const stateKey = 'spotify_auth_state';
 
 const ResetCookieSerialized = cookie.serialize(stateKey, '', {
@@ -57,6 +57,8 @@ export default async (req, res) => {
         },
         json: true,
       };
+      console.log(client_id);
+      console.log(client_secret);
   
       request.post(authOptions, (error, response, body) => {
         if (!error && response.statusCode === 200) {
