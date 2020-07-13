@@ -19,18 +19,22 @@ const pluralize = (count, word) => {
 export default function Dashboard(props) {
   const removeArtists = () => {
     UnFollowArtists(props.token);
+    props.artistCount = 0;
   }
 
   const removePlaylists = () => {
     UnfollowPlaylists(props.token);
+    props.playlistCount = 0;
   }
 
   const removeSongs = () => {
     RemoveTracksFromLibrary(props.token); 
+    props.songCount = 0;
   }
 
   const removeAlbums = () => { 
     RemoveAlbumsFromLibrary(props.token);
+    props.albumCount = 0;
   }
 
   return (
