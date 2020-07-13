@@ -85,6 +85,13 @@ export default class Dashboard extends Component<DashboardProps, DashboardState>
     this.setState({ albumsCount: 0 })
   }
 
+  removeAll = () => {
+    this.removeArtists()
+    this.removePlaylists()
+    this.removeSongs()
+    this.removeAlbums()
+  }
+
   render() {
     return (
       <>
@@ -97,7 +104,7 @@ export default class Dashboard extends Component<DashboardProps, DashboardState>
             <h1>{this.props.name}</h1>
           </div>
 
-          <Button className={styles.resetButton}>Reset all my spotify!!!</Button>
+          <Button onClick={this.removeAll} className={styles.resetButton}>Reset all my spotify!!!</Button>
 
           <FormattedContent>
             <p className={styles.resetText}>Resetting all your spotify will:</p>
