@@ -44,5 +44,6 @@ export default async (req, res) => {
           state: state,
         }) 
     });
+    console.log(client_id);
     res.end();
 }
