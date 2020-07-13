@@ -57,8 +57,6 @@ export default async (req, res) => {
         },
         json: true,
       };
-      console.log(client_id);
-      console.log(client_secret);
   
       request.post(authOptions, (error, response, body) => {
         if (!error && response.statusCode === 200) {
