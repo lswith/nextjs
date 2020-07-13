@@ -34,7 +34,7 @@ export default async (req, res) => {
     const storedState = req.cookies ? req.cookies[stateKey] : null;
   
     if (state === null || state !== storedState) {
-      res.writeHead(302, { Location: '/error' +
+      res.writeHead(302, { Location: '/error?' +
         +
           querystring.stringify({
             error: 'state_mismatch',
@@ -80,7 +80,7 @@ export default async (req, res) => {
           res.writeHead(302, { Location: '/dashboard' });
           res.end();
         } else {
-          res.writeHead(302, { Location: '/error' +
+          res.writeHead(302, { Location: '/error?' +
               querystring.stringify({
                 error: 'invalid_token',
               })
