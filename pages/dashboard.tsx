@@ -4,7 +4,12 @@ import cookie from 'cookie';
 import Page from '../components/Page';
 import Button from '../components/Button';
 import FormattedContent from '../components/FormattedContent';
-import { GetFollowedArtistsCount, GetPlaylistsCount, GetLibraryAlbumsCount, GetLibraryTrackCount, GetMe, UnFollowArtists} from '../lib/spotify-functions';
+import { GetMe } from '../lib/me';
+import { GetFollowedArtistsCount, UnFollowArtists } from '../lib/artists';
+import { GetPlaylistsCount, UnfollowPlaylists } from '../lib/playlists';
+import { GetLibraryTrackCount, RemoveTracksFromLibrary } from '../lib/tracks';
+import { GetLibraryAlbumsCount, RemoveAlbumsFromLibrary } from '../lib/albums';
+
 import styles from './dashboard.module.css';
 
 const pluralize = (count, word) => {
@@ -13,9 +18,21 @@ const pluralize = (count, word) => {
 
 export default function Dashboard(props) {
   const removeArtists = () => {
-    console.log('test');
     UnFollowArtists(props.token);
   }
+
+  const removePlaylists = () => {
+    UnfollowPlaylists(props.token);
+  }
+
+  const removeSongs = () => {
+    RemoveTracksFromLibrary(props.token); 
+  }
+
+  const removeAlbums = () => { 
+    RemoveAlbumsFromLibrary(props.token);
+  }
+
   return (
     <>
       <Head>
@@ -38,15 +55,15 @@ export default function Dashboard(props) {
               <span className={styles.meta}>You are currently following {pluralize(props.artistCount, 'artist')}</span>
             </li>
             <li className={styles.listItem}>
-              <Button>Unfollow all playlists</Button>
+              <Button onClick={removePlaylists}>Unfollow all playlists</Button>
               <span className={styles.meta}>You are currently following {pluralize(props.playlistCount, 'playlist')}</span>
             </li>
             <li className={styles.listItem}>
-              <Button>Unlike all songs</Button>
+              <Button onClick={removeSongs}>Unlike all songs</Button>
               <span className={styles.meta}>You are currently liking {pluralize(props.songCount, 'song')}</span>
             </li>
             <li className={styles.listItem}>
-              <Button>Unlike all albums</Button>
+              <Button onClick={removeAlbums}>Unlike all albums</Button>
               <span className={styles.meta}>You are currently liking {pluralize(props.albumCount, 'album')}</span>
             </li>
           </ul>
